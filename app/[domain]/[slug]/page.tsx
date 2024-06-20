@@ -115,7 +115,7 @@ export default async function SitePostPage({
               ? `https://twitter.com/${data.site.user.username}`
               : `https://github.com/${data.site?.user?.gh_username}`
           }
-          rel="noreferrer"
+          rel="noopener"
           target="_blank"
         >
           <div className="my-8">
