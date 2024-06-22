@@ -7,7 +7,7 @@ export default async function Sitemap() {
     headersList
       .get("host")
       ?.replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) ??
-    "vercel.pub";
+    "patoosite.net";
 
   const posts = await getPostsForSite(domain);
 

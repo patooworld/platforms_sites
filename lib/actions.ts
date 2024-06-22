@@ -70,9 +70,9 @@ export const updateSite = withSiteAuth(
       let response;
 
       if (key === "customDomain") {
-        if (value.includes("vercel.pub")) {
+        if (value.includes("patoosite.net")) {
           return {
-            error: "Cannot use vercel.pub subdomain as your custom domain",
+            error: "Cannot use patoosite.net subdomain as your custom domain",
           };
 
           // if the custom domain is valid, we need to add it to Vercel
@@ -107,7 +107,7 @@ export const updateSite = withSiteAuth(
         if (site.customDomain && site.customDomain !== value) {
           response = await removeDomainFromVercelProject(site.customDomain);
 
-          /* Optional: remove domain from Vercel team 
+          /* Optional: remove domain from Vercel team
 
           // first, we need to check if the apex domain is being used by other sites
           const apexDomain = getApexDomain(`https://${site.customDomain}`);
@@ -137,7 +137,7 @@ export const updateSite = withSiteAuth(
               site.customDomain
             );
           }
-          
+
           */
         }
       } else if (key === "image" || key === "logo") {
