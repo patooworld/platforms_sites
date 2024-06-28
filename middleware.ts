@@ -17,7 +17,7 @@ export const config = {
 export default async function middleware(req: NextRequest) {
   const url = req.nextUrl;
 
-  // Get hostname of request (e.g. demo.patoosite.net, demo.localhost:3000)
+  // Get hostname of request (e.g. demo.patooworld.com, demo.localhost:3000)
   let hostname = req.headers
     .get("host")!
     .replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
@@ -51,20 +51,20 @@ export default async function middleware(req: NextRequest) {
     );
   }
 
-  // special case for `vercel.pub` domain
-  if (hostname === "vercel.pub") {
+  // special case for `patooworld.com` domain
+  if (hostname === "patooworld.com") {
     return NextResponse.redirect(
-      "/home",
+      "https://patooworld.com/home",
     );
   }
 
   // rewrite root application to `/home` folder
   if (
-    hostname === "localhost:3000" ||
+    hostname === "app.patooworld.com" ||
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
   ) {
     return NextResponse.rewrite(
-      new URL(`/home${path === "/" ? "" : path}`, req.url),
+      new URL(`/home${path === "/" ? "@/lib/domains" : path}`, req.url),
     );
   }
 
